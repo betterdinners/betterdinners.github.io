@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+    
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>WELCOME TO BETTER DINNERS</title>
+        <meta name="description" content="Sharing using Better Dinners iPhone App.">
+        
+            <!-- Open Graph Meta Tags -->
+        <meta property="og:title" content="Better Dinners Share">
+        <meta property="og:description" content="A share from Better Dinners">
+        <meta property="og:image" content="https://betterdinners.github.io/images/BetterDinnersIcon.png">
+        <meta property="og:url" content="https://betterdinners.github.io">
+        <meta property="og:type" content="website">
+        
+        <link rel="stylesheet" href="main.css">
+    </head>
+    <body>
+        
+        <h1>Welcome to Better Dinners!</h1>
+        
+        <h2>Create and share recipes.</h2>
+        <h2>Keep on top of your groceries with shopping lists.</h2>
+        <h2>Organise and plan your meals with the meal planner.</h2>
+        
+        <p>
+            Efficiently organise your meals and weekly grocery shopping with Better Dinners. Collaborate and share with friends and family to make life a bit easier. Lets make dinners better.
+        </p>
+        
+                 
+        <a>
+            <img alt="App image" src="images/BetterDinnersIcon.png"/>
+        </a>
+        
+        <p>
+            <a href="PrivacyPolicy.html"> 
+                Privacy Policy
+            </a>
+        </p>
+        
+        
+    <script>
+                
+        function getQueryParam(param) {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get(param);
+        }
+
+        // Function to create the app URL
+        function createAppUrl(shareId) {
+            const appScheme = "betterdinners://";
+            return appScheme + shareId;
+        }
+
+        window.onload = function () {
+            const isMobile = /iPhone|iPad|iPod/i.test(navigator.userAgent); 
+            if (isMobile) {
+                console.log( document.referrer )
+                
+                const isUserComingFromInstagramReferral = document.referrer.includes("instagram");
+                /*if (isUserComingFromInstagramReferral) {*/
+                    
+                            // Get the shareId from the URL query parameters
+                    const shareId = getQueryParam('id');
+                    console.log(shareId)
+
+                    if (shareId) {
+                        const appUrl = createAppUrl(shareId);
+                        // Redirect to the app
+                        console.log("App URL: ", appUrl);
+                        window.location.href = appUrl;
+                    } 
+                    /*
+                    setTimeout(function () { 
+                    // wait a second and then to go App Store or your Website
+                    // if the user hasn't installed yet.
+                      window.location = "your-web-site-or-app-store-link";
+                    }, 1000); */
+                /*}*/
+            }
+            else {
+                console.log("Not a mobile");
+            }
+        }
+        
+    </script> 
+        
+              
+        
+    </body>
+</html>
+
