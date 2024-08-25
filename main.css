@@ -59,4 +59,25 @@ img {
     }
 }
 
+.capsule-button {
+    background-color: #007BFF; /* Blue background */
+    color: white; /* White text */
+    border: none; /* No border */
+    padding: 10px 20px; /* Some padding */
+    text-align: center; /* Centered text */
+    text-decoration: none; /* No underline */
+    display: inline-block; /* Inline block */
+    font-size: 16px; /* Set a font size */
+    border-radius: 50px; /* Rounded borders */
+    cursor: pointer; /* Pointer/hand icon */
+    transition: background-color 0.4s, color 0.4s; /* Transition effect for color changes */
+}
+
+.capsule-button:hover {
+    background-color: #0056b3; /* Darker blue background on hover */
+    color: white; /* Keep white text on hover */
+    /* No size change on hover */
+}
+
+
 
