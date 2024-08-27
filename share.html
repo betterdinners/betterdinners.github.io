@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+    
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>WELCOME TO BETTER DINNERS</title>
+        <meta name="description" content="Sharing using Better Dinners iPhone App.">
+        
+            <!-- Open Graph Meta Tags -->
+        <meta property="og:title" content="Better Dinners Share">
+        <meta property="og:description" content="A share from Better Dinners">
+        <meta property="og:image" content="https://betterdinners.github.io/images/BetterDinnersIcon.png">
+        <meta property="og:url" content="https://betterdinners.github.io">
+        <meta property="og:type" content="website">
+        
+        <link rel="stylesheet" href="main.css">
+    </head>
+    <body>
+        
+        <h1>Welcome to Better Dinners!</h1>
+        
+        <h4>Sharing via Facebook Messenger will lead you here...</h4>
+        
+        <button id="copyURL" class="capsule-button" onclick="copyURL()">Copy URL</button>
+        
+        <h2>Copy link to a browser like Safari or notes OR share via text, Whatsapp or Instagram.</h2>
+
+
+        
+        <p>
+            <a href="index.html"> 
+                Or continue to Main Website...
+            </a>
+        </p>
+                 
+        <a>
+            <img alt="App image" src="images/BetterDinnersIcon.png"/>
+        </a>
+        
+
+        
+    
+     <!-- Re-direct to App from places such as Instagram -->   
+    <script>
+                
+        function getQueryParam(param) {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get(param);
+        }
+
+        // Function to create the app URL
+        function createAppUrl(shareId) {
+            const appScheme = "betterdinners://";
+            return appScheme + shareId;
+        }
+        
+        function copyURL() {
+            // Get the current URL
+            const currentUrl = window.location.href
+            
+            // Create a temporary input element
+            const tempInput = document.createElement('input');
+            tempInput.value = currentUrl;
+            document.body.appendChild(tempInput);
+
+            // Select the text in the input element
+            tempInput.select();
+            tempInput.setSelectionRange(0, 99999); // For mobile devices
+
+            // Copy the text to the clipboard
+            document.execCommand('copy');
+
+            // Remove the temporary input element from the document
+            document.body.removeChild(tempInput);
+            
+            // Optionally, you can alert the user that the URL has been copied
+            alert('URL copied to clipboard: ' + currentUrl);
+        } 
+
+        window.onload = function () {
+            const isMobile = /iPhone|iPad|iPod/i.test(navigator.userAgent); 
+            if (isMobile) {
+                console.log( document.referrer )
+                
+                const isUserComingFromInstagramReferral = document.referrer.includes("instagram");
+                /*if (isUserComingFromInstagramReferral) {*/
+                    
+                            // Get the shareId from the URL query parameters
+                    const shareId = getQueryParam('id');
+                    console.log(shareId)
+
+                    if (shareId) {
+                        const appUrl = createAppUrl(shareId);
+                        // Redirect to the app
+                        console.log("App URL: ", appUrl);
+                        window.location.href = appUrl;
+                    } 
+                    /*
+                    setTimeout(function () { 
+                    // wait a second and then to go App Store or your Website
+                    // if the user hasn't installed yet.
+                      window.location = "your-web-site-or-app-store-link";
+                    }, 1000); */
+                /*}*/
+            }
+            else {
+                console.log("Not a mobile");
+            }
+        }
+        
+    </script> 
+        
+              
+        
+    </body>
+</html>
