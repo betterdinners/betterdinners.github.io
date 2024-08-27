@@ -106,7 +106,9 @@
                     // Redirect to the app
                     console.log("App URL: ", appUrl);
                     
-                    window.location.href = appUrl;
+                    //window.location.href = appUrl;
+                    //window.location.assign(appUrl);
+                    window.open(appUrl, '_self');
                 } else {
                     // If there is no shareId, hide the button
                     toggleButtonDisplay(false);
