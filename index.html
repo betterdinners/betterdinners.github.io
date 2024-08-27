@@ -27,6 +27,7 @@
         <h1>Welcome to Better Dinners!</h1>
         
         <button id="redirectButton" class="capsule-button" onclick="handleRedirect()">Open share in App</button>
+        <p id="urlDisplay"></p> <!--- Element to display the current URL -->
         
         <h2>Create and share recipes.</h2>
         <h2>Keep on top of your groceries with shopping lists.</h2>
@@ -72,6 +73,12 @@
             }
         }
         
+        function displayCurrentUrl() {
+            const urlDisplayElement = document.getElementById('urlDisplay');
+            const currentUrl = window.location.href; // Get the current URL
+            urlDisplayElement.textContent = `Current URL: ${currentUrl}`; // Update the HTML element with the URL
+        }   
+        
         function handleRedirect() {
             const isMobile = /iPhone|iPad|iPod/i.test(navigator.userAgent); 
             if (isMobile) {
@@ -92,6 +99,10 @@
                 } else {
                     // If there is no shareId, hide the button
                     toggleButtonDisplay(false);
+                    
+                    // Add text of what the current url is
+                    displayCurrentUrl();
+                    
                 }
                 /*
                 setTimeout(function () { 
