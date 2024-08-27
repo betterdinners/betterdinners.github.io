@@ -28,6 +28,7 @@
         
         <button id="redirectButton" class="capsule-button" onclick="handleRedirect()">Open share in App</button>
         <p id="urlDisplay"></p> <!--- Element to display the current URL -->
+        <p id="redirectDisplay"></p>
         
         <h2>Create and share recipes.</h2>
         <h2>Keep on top of your groceries with shopping lists.</h2>
@@ -77,9 +78,17 @@
             const urlDisplayElement = document.getElementById('urlDisplay');
             const currentUrl = window.location.href; // Get the current URL
             urlDisplayElement.textContent = `Current URL: ${currentUrl}`; // Update the HTML element with the URL
-        }   
+        } 
+        
+        function displayRedirectLink(location) {
+            const urlDisplayElement = document.getElementById('redirectDisplay');
+            urlDisplayElement.textContent = `${location}`; // Update the HTML element with the URL
+        } 
+        
         
         function handleRedirect() {
+            displayCurrentUrl()
+            
             const isMobile = /iPhone|iPad|iPod/i.test(navigator.userAgent); 
             if (isMobile) {
                 console.log(document.referrer);
@@ -95,6 +104,8 @@
                     const appUrl = createAppUrl(shareId);
                     // Redirect to the app
                     console.log("App URL: ", appUrl);
+                    displayRedirectLink(appUrl)
+                    
                     window.location.href = appUrl;
                 } else {
                     // If there is no shareId, hide the button
