@@ -15,22 +15,11 @@
         <meta property="og:url" content="https://betterdinners.github.io">
         <meta property="og:type" content="website">
         
-        <meta property="al:ios:url" content="betterdinners://" />
-        <meta property="al:ios:app_store_id" content="12345" />
-        <meta property="al:ios:app_name" content="Better Dinners" />
-        <meta property="fb:app_id" content="523173253584869" />
-        
         <link rel="stylesheet" href="main.css">
     </head>
     <body>
         
         <h1>Welcome to Better Dinners!</h1>
-        
-        <!--
-        <button id="redirectButton" class="capsule-button" onclick="handleRedirect()">Open share in App</button>
-        <p id="urlDisplay"></p>
-        <p id="redirectDisplay"></p>
-        --->
         
         <h2>Create and share recipes.</h2>
         <h2>Keep on top of your groceries with shopping lists.</h2>
@@ -51,6 +40,7 @@
             </a>
         </p>
         
+        
     <script>
                 
         function getQueryParam(param) {
@@ -63,71 +53,37 @@
             const appScheme = "betterdinners://";
             return appScheme + shareId;
         }
-        
-        /*
-        function toggleButtonDisplay(show) {
-            const button = document.getElementById('redirectButton');
-            if (show) {
-                button.style.display = 'inline-block'; // Show the button
-            } else {
-                button.style.display = 'none'; // Hide the button
-            }
-        }
-        
-        function displayCurrentUrl() {
-            const urlDisplayElement = document.getElementById('urlDisplay');
-            const currentUrl = window.location.href; // Get the current URL
-            urlDisplayElement.textContent = `Current URL: ${currentUrl}`; // Update the HTML element with the URL
-        } 
-        
-        function displayRedirectLink(location) {
-            const urlDisplayElement = document.getElementById('redirectDisplay');
-            urlDisplayElement.textContent = `${location}`; // Update the HTML element with the URL
-        } 
-        */
-        
-        
-        function handleRedirect() {
-            displayCurrentUrl()
-            
+
+        window.onload = function () {
             const isMobile = /iPhone|iPad|iPod/i.test(navigator.userAgent); 
             if (isMobile) {
-                console.log(document.referrer);
-
+                console.log( document.referrer )
+                
                 const isUserComingFromInstagramReferral = document.referrer.includes("instagram");
                 /*if (isUserComingFromInstagramReferral) {*/
-
-                // Get the shareId from the URL query parameters
-                const shareId = getQueryParam('id');
-                console.log(shareId);
-
-                if (shareId) {
-                    const appUrl = createAppUrl(shareId);
-                    // Redirect to the app
-                    console.log("App URL: ", appUrl);
                     
-                    window.location.href = appUrl;
-                } else {
-                    // If there is no shareId, hide the button
-                    //toggleButtonDisplay(false);
-                }
-                /*
-                setTimeout(function () { 
+                            // Get the shareId from the URL query parameters
+                    const shareId = getQueryParam('id');
+                    console.log(shareId)
+
+                    if (shareId) {
+                        const appUrl = createAppUrl(shareId);
+                        // Redirect to the app
+                        console.log("App URL: ", appUrl);
+                        window.location.href = appUrl;
+                    } 
+                    /*
+                    setTimeout(function () { 
                     // wait a second and then to go App Store or your Website
                     // if the user hasn't installed yet.
-                    window.location = "your-web-site-or-app-store-link";
-                }, 1000); */
+                      window.location = "your-web-site-or-app-store-link";
+                    }, 1000); */
                 /*}*/
-            } else {
+            }
+            else {
                 console.log("Not a mobile");
-                if (!shareId) {
-                    // If not mobile and no shareId, hide the button
-                    //toggleButtonDisplay(false);
-                }
             }
         }
-
-        window.onload = handleRedirect()
         
     </script> 
         
@@ -135,4 +91,3 @@
         
     </body>
 </html>
-
