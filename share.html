@@ -27,7 +27,9 @@
         
         <h2>Copy link to a browser like Safari or notes OR share via text, Whatsapp or Instagram.</h2>
 
-
+        <a href="https://apps.apple.com/au/app/better-dinners/id6651839294" target="_blank">
+            <img alt="Redirect to App Store" src="images/downloadOnAppStore.png" class="app-store-image"/>
+        </a>
         
         <p>
             <a href="index.html"> 
@@ -83,11 +85,8 @@
             const isMobile = /iPhone|iPad|iPod/i.test(navigator.userAgent); 
             if (isMobile) {
                 console.log( document.referrer )
-                
-                const isUserComingFromInstagramReferral = document.referrer.includes("instagram");
-                /*if (isUserComingFromInstagramReferral) {*/
                     
-                            // Get the shareId from the URL query parameters
+                    // Get the shareId from the URL query parameters
                     const shareId = getQueryParam('id');
                     console.log(shareId)
 
@@ -96,14 +95,12 @@
                         // Redirect to the app
                         console.log("App URL: ", appUrl);
                         window.location.href = appUrl;
+                        
+                        setTimeout(function () { 
+                            // wait a second and then to go App Store if the user hasn't installed yet.
+                            window.location = "https://apps.apple.com/au/app/better-dinners/id6651839294";
+                        }, 1000);
                     } 
-                    /*
-                    setTimeout(function () { 
-                    // wait a second and then to go App Store or your Website
-                    // if the user hasn't installed yet.
-                      window.location = "your-web-site-or-app-store-link";
-                    }, 1000); */
-                /*}*/
             }
             else {
                 console.log("Not a mobile");

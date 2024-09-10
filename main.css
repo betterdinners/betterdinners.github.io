@@ -39,13 +39,14 @@ p {
 }
 
 img {
-    animation: colorize 2s cubic-bezier(0, 0, .78, .36) 1;
+    /*animation: colorize 2s cubic-bezier(0, 0, .78, .36) 1;
     background: transparent;
     border: 10px solid rgba(0, 0, 0, 0.12);
-    border-radius: 4px;
-    display: block;
+    border-radius: 4px; */
+    display: block; 
     margin: 1.3em auto;
-    max-width: 60%; /*95%;*/
+    width: 40%; /*not inc*/
+    max-width: 500px; /*50%;*/
 }
 
 @keyframes colorize {
@@ -79,5 +80,12 @@ img {
     /* No size change on hover */
 }
 
+.app-store-image {
+    width: 40%; /* Image will take up X% of its parent container's width */
+    max-width: 300px; /* Optional: set a maximum width */
+    height: auto; /* Keeps the aspect ratio */
+    display: block;
+    margin: 0 auto; /* Centers the image horizontally */
+}
 
 
